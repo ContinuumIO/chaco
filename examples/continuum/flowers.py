@@ -60,8 +60,26 @@ class DemoHandler(Handler):
         #hack to tell us to add 'selection tool'
         objs[id(pd)]['tools'] = 'select'
         print objs
-        import pdb;pdb.set_trace()
-        return id(self), objs
+        self.render_html_objs(id(demo.plot), objs)
+    
+    def render_html_objs(self, main_id, objs):
+        import jinja2
+        import os
+        import os.path
+        import simplejson
+        fpath = os.path.join(os.path.dirname(__file__), 'export_template.html')
+        template = jinja2.Template(open(fpath).read())
+        html_output = template.render(title='graph')
+        fpath = os.path.join(os.path.dirname(__file__), 'main_template.js')
+        template = jinja2.Template(open(fpath).read())
+        main_js = template.render(export_data=simplejson.dumps(objs),
+                                  main_id = main_id)
+        fpath = os.path.join(os.path.dirname(__file__), 'export.html')
+        with open(fpath, "w+") as f:
+            f.write(html_output)
+        fpath = os.path.join(os.path.dirname(__file__), 'main.js')
+        with open(fpath, "w+") as f:
+            f.write(main_js)
         
 class Demo(HasTraits):
     plot = Instance(Component)

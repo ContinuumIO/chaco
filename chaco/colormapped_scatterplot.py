@@ -80,7 +80,12 @@ class ColormappedScatterPlot(ScatterPlot):
     #------------------------------------------------------------------------
     # BaseXYPlot interface
     #------------------------------------------------------------------------
-
+    def add_json(self, objs):
+        super(ColormappedScatterPlot, self).add_json(objs)
+        myobj = objs[id(self)]
+        if hasattr(self, 'color_name'):
+            myobj['color_name'] = self.color_name
+    
     def map_screen(self, data_array):
         """
         Maps an array of data points into screen space, and returns them as

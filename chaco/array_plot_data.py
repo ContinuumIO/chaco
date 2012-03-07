@@ -68,7 +68,13 @@ class ArrayPlotData(AbstractPlotData):
     #------------------------------------------------------------------------
     # Dictionary Interface
     #------------------------------------------------------------------------
-
+    def add_json(self, objs):
+        objs[id(self)] = {'type' : self.__class__.__name__,
+                          'arrays' : {}}
+        myobj = objs[id(self)]
+        for k,v in self.arrays.iteritems():
+            myobj['arrays'][k] = v.tolist()
+    
     def __getitem__(self, name):
         return self.arrays.get(name, None)
 

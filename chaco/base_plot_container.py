@@ -48,7 +48,13 @@ class BasePlotContainer(Container):
 
     # Deprecated property for accessing the components in the container.
     plot_components = Property
-
+    
+    def add_json(self, objs):
+        objs[id(self)] =  {'type' : self.__class__.__name__,
+                           'height' : self.height,
+                           'width' : self.width
+                           }
+    
     def _get_plot_components(self):
         warnings.warn("Use of plot_components attribute deprecated." \
                       "Use components attribute instead.", DeprecationWarning)

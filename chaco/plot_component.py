@@ -49,6 +49,9 @@ class PlotComponent(Component):
     # Draw layers in **draw_order**? If False, use _do_draw() (for backwards
     # compatibility).
     use_draw_order = Bool(True)
+    
+    def add_json(self, objs):
+        objs[id(self)] = {'type' : self.__class__.__name__}
 
     def _use_draw_order_changed(self, old, new):
         """ Handler to catch the case when someone is trying to use the

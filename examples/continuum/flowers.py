@@ -3,9 +3,9 @@ import chaco.api as chacoapi
 import chaco.tools.api as toolsapi
 from traits.api import HasTraits, Instance
 from enable.api import Component, ComponentEditor
-from traitsui.api import Item, Group, View
-size=(1000,800)
-
+from traitsui.api import Item, Group, View, Handler, Action
+size=(500,500)
+pd = chacoapi.ArrayPlotData()
 def _create_plot_component():
     varnames = data['traits']
     species_map = {}
@@ -14,7 +14,6 @@ def _create_plot_component():
     container = chacoapi.GridContainer(
         padding=40, fill_padding=True, bgcolor="lightgray", use_backbuffer=True,
         shape=(4,4), spacing=(20,20))
-    pd = chacoapi.ArrayPlotData()
     for varname in varnames:
         pd.set_data(varname, [x[varname] for x in data['values']]);
     pd.set_data('species', [species_map[x['species']] for x in data['values']])
@@ -32,7 +31,12 @@ def _create_plot_component():
             plot.border_width = 1
             plot.padding = 0
             plot.padding_top = 30
-            my_plot = plot.plots["hello"][0]            
+            my_plot = plot.plots["hello"][0]
+            my_plot.index_name = varnames[x]
+            my_plot.value_name = varnames[y]
+            my_plot.color_name = 'species'
+            my_plot.data_source = id(pd)
+            
             lasso_selection = toolsapi.LassoSelection(
                 component=my_plot,
                 selection_datasource=my_plot.index
@@ -47,20 +51,36 @@ def _create_plot_component():
             
     return container
 
+     
+class DemoHandler(Handler):
+    def do_export(self, obj):
+        objs = {}
+        demo.plot.add_json(objs)
+        pd.add_json(objs)
+        #hack to tell us to add 'selection tool'
+        objs[id(pd)]['tools'] = 'select'
+        print objs
+        import pdb;pdb.set_trace()
+        return id(self), objs
+        
 class Demo(HasTraits):
     plot = Instance(Component)
-    traits_view = \
-        View(
-            Group(
-                Item('plot', editor=ComponentEditor(size=size),
-                        show_label=False),
-                orientation = "vertical"
-                ),
-            resizable=True, title='hello' )
+    traits_view = View(
+        Group(
+            Item('plot', editor=ComponentEditor(size=size),
+                 show_label=False),
+            orientation = "vertical"
+            ),
+        handler=DemoHandler,
+        buttons=[
+            Action(name='Export', action='do_export')
+            ],
+        resizable=True, title='hello' )
 
     def _plot_default(self):
-         return _create_plot_component()
-
+        plot = _create_plot_component()
+        return plot
+     
 demo = Demo()
 
 if __name__ == "__main__":

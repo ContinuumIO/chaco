@@ -217,14 +217,6 @@ class ScatterPlot(BaseXYPlot):
     #------------------------------------------------------------------------
     # Overridden PlotRenderer methods
     #------------------------------------------------------------------------
-    def add_json(self, objs):
-        super(ScatterPlot, self).add_json(objs)
-        myobj = objs[id(self)]
-        if hasattr(self, 'index_name'):
-            myobj['index_name'] = self.index_name
-        if hasattr(self, 'value_name'):
-            myobj['value_name'] = self.value_name
-
     def map_screen(self, data_array):
         """ Maps an array of data points into screen space and returns it as
         an array.

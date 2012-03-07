@@ -148,7 +148,7 @@ class BaseXYPlot(AbstractPlotRenderer):
     #------------------------------------------------------------------------
     def add_json(self, objs):
         super(BaseXYPlot, self).add_json(objs)
-        myobj = objs[id(self)]
+        myobj = objs[str(id(self))]
         if hasattr(self, 'index_name'):
             myobj['index_name'] = self.index_name
         if hasattr(self, 'value_name'):

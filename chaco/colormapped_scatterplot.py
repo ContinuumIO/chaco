@@ -82,7 +82,7 @@ class ColormappedScatterPlot(ScatterPlot):
     #------------------------------------------------------------------------
     def add_json(self, objs):
         super(ColormappedScatterPlot, self).add_json(objs)
-        myobj = objs[id(self)]
+        myobj = objs[str(id(self))]
         if hasattr(self, 'color_name'):
             myobj['color_name'] = self.color_name
     

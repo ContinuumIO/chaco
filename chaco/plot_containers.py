@@ -367,11 +367,11 @@ class GridPlotContainer(BasePlotContainer):
     _v_size_prefs = Any
     
     def add_json(self, objs):
-        objs[id(self)] = {'type' : self.__class__.__name__,
-                          'shape' : self.shape,
-                          'id' : id(self),
-                          'component_grid' : [[id(plt) for plt in row] 
-                                              for row in self.component_grid]}
+        objs[str(id(self))] = {'type' : self.__class__.__name__,
+                               'shape' : self.shape,
+                               'id' : str(id(self)),
+                               'component_grid' : [[str(id(plt)) for plt in row] 
+                                                   for row in self.component_grid]}
         for row in self.component_grid:
             for plt in row:
                 plt.add_json(objs)

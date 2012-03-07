@@ -148,10 +148,10 @@ class Plot(DataView):
     #------------------------------------------------------------------------
     def add_json(self, objs):
         super(Plot, self).add_json(objs)
-        myobj = objs[id(self)]
+        myobj = objs[str(id(self))]
         myobj['plots'] = {}
         for k,v in self.plots.iteritems():
-            myobj['plots'][k] = [id(x) for x in v]
+            myobj['plots'][k] = [str(id(x)) for x in v]
             [x.add_json(objs) for x in v]
     
     def __init__(self, data=None, **kwtraits):

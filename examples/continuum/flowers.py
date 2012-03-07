@@ -58,9 +58,9 @@ class DemoHandler(Handler):
         demo.plot.add_json(objs)
         pd.add_json(objs)
         #hack to tell us to add 'selection tool'
-        objs[id(pd)]['tools'] = 'select'
+        objs[str(id(pd))]['tools'] = 'select'
         print objs
-        self.render_html_objs(id(demo.plot), objs)
+        self.render_html_objs(str(id(demo.plot)), objs)
     
     def render_html_objs(self, main_id, objs):
         import jinja2

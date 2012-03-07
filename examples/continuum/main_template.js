@@ -1,6 +1,5 @@
 window.export_data = {{ export_data }};
 window.main_id = "{{ main_id }}";
-Backbone.sync = function(){};
 _.uniqueId = function (prefix) {
     //from ipython project
     // http://www.ietf.org/rfc/rfc4122.txt
@@ -17,23 +16,13 @@ _.uniqueId = function (prefix) {
 
 window.default_render_namespace = {}
 chaco = {}
-chaco.sources_from_data = function(namespace, all_objs, obj_id){
+chaco.datasource_from_data = function(namespace, all_objs, obj_id){
+    var obj = all_objs[obj_id];
+    var obj_type = obj['type']
     var model;
     var collection;
-    if (namespace[obj_id]){
-	return namespace[obj_id]
-    }else{
-	if(!namespace['ArrayPlotDatas']){
-	    namespace['ArrayPlotDatas'] = new chaco.ArrayPlotDatas();
-	}
-	collection = namespace['ArrayPlotDatas'];
-	//model = collection.create(all_objs[obj_id]);
-    }
-    return {'collection' : collection,
-	    'model' : model};
-    
 }
-chaco.render_from_data = function(render_namespace, all_objs, obj_id, el){
+chaco.from_data = function(render_namespace, all_objs, obj_id, el){
     var obj = all_objs[obj_id];
     var obj_type = obj['type']
     var model;
@@ -88,8 +77,9 @@ chaco.GridPlotContainer = Backbone.Model.extend({
 });
 
 chaco.GridPlotContainers = Backbone.Collection.extend({
-    model : chaco.GridPlotContainerModel,
+    model : chaco.GridPlotContainer,
     url : "/",
+    localStorage : new Store('GridPlotContainers', true)
 });
 
 chaco.GridPlotContainerView = Backbone.View.extend({
@@ -105,7 +95,7 @@ chaco.GridPlotContainerView = Backbone.View.extend({
 	this.$el.width(this.model.get('width'));
 	_.each(this.model.get('component_grid'), function(row){
 	    _.each(row, function(objid){
-		results = chaco.render_from_data(window.default_render_namespace,
+		results = chaco.from_data(window.default_render_namespace,
 					  window.export_data, 
 					  objid);
 		that.$el.append(results['view'].$el);
@@ -138,6 +128,7 @@ chaco.ColormappedScatterPlot = Backbone.Model.extend({
 chaco.ColormappedScatterPlots = Backbone.Collection.extend({
     model : chaco.ColormappedScatterPlot,
     url : "/",
+    localStorage : new Store('ColormappedScatterPlots', true)
 });
 chaco.ColormappedScatterPlotview = Backbone.View.extend({
     initialize : function(options){
@@ -147,27 +138,8 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
     },
 });
 
-//ArrayPlotData model, collection
-
-chaco.ArrayPlotData = Backbone.Model.extend({
-    initialize : function(attributes, options){
-	if (!attributes['id']){
-	    this.set({'id' : _.uniqueId('view')}, 
-		     {silent : true})
-	}
-    },
-    defaults : {
-	'arrays' : {},
-	'tools' : []
-    }
-});
-chaco.ArrayPlotDatas = Backbone.Collection.extend({
-    model : chaco.ArrayPlotData,
-    url : "/",
-});
-
 $(function(){
-    results = chaco.render_from_data(window.default_render_namespace,
+    results = chaco.from_data(window.default_render_namespace,
 			      window.export_data, 
 			      window.main_id, 
 			      $('#chart')[0]);

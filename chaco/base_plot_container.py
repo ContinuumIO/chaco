@@ -52,8 +52,8 @@ class BasePlotContainer(Container):
     def add_json(self, objs):
         objs[str(id(self))] =  {'type' : self.__class__.__name__,
                                 'height' : self.height,
-                                'width' : self.width
-                                }
+                                'width' : self.width,
+                                'id' : str(id(self))}
     
     def _get_plot_components(self):
         warnings.warn("Use of plot_components attribute deprecated." \

@@ -51,7 +51,8 @@ class PlotComponent(Component):
     use_draw_order = Bool(True)
     
     def add_json(self, objs):
-        objs[str(id(self))] = {'type' : self.__class__.__name__}
+        objs[str(id(self))] = {'type' : self.__class__.__name__,
+                               'id' : str(id(self))}
 
     def _use_draw_order_changed(self, old, new):
         """ Handler to catch the case when someone is trying to use the

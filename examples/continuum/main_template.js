@@ -215,8 +215,10 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 	svg.selectAll('circle')
 	    .data(model.get('data_source_model').to_d3())
 	    .enter().append('circle')
-	    .attr('class', function(d){
-		return "" + d[model.get('color_name')];
+	    .attr('fill', function(d){
+		var color_value = d[model.get('color_name')];
+		var rgb = model.get('color_map')[color_value];
+		return d3.rgb(rgb[0], rgb[1], rgb[2]).toString();
 	    })
 	    .attr('cx', function(d){
 		return that.index_axis(d[model.get('index_name')]);

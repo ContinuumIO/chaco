@@ -1,5 +1,18 @@
 window.export_data = {{ export_data }};
 window.main_id = "{{ main_id }}";
+Backbone.create_or_get = function(collection, attributes){
+	var obj = null;
+	if (attributes['id']){
+	    if(collection.get(attributes['id'])){
+		obj = collection.get(attributes['id']);
+	    }
+	}
+	if (!obj){
+	    obj = collection.create(attributes);
+	}
+	return obj;
+}
+
 _.uniqueId = function (prefix) {
     //from ipython project
     // http://www.ietf.org/rfc/rfc4122.txt
@@ -15,13 +28,24 @@ _.uniqueId = function (prefix) {
 };
 
 window.default_render_namespace = {}
+window.default_namespace = {}
 chaco = {}
 chaco.datasource_from_data = function(namespace, all_objs, obj_id){
     var obj = all_objs[obj_id];
     var obj_type = obj['type']
     var model;
     var collection;
+    if (obj_type === 'ArrayPlotData'){
+	if (!namespace['ArrayPlotDatas']){
+	    namespace['ArrayPlotDatas'] = new chaco.ArrayPlotDatas()
+	}
+	collection = namespace['ArrayPlotDatas'];
+	model = Backbone.create_or_get(collection, obj);
+    }
+    return {'collection' : collection,
+	    'model' : model}
 }
+
 chaco.from_data = function(render_namespace, all_objs, obj_id, el){
     var obj = all_objs[obj_id];
     var obj_type = obj['type']
@@ -33,7 +57,7 @@ chaco.from_data = function(render_namespace, all_objs, obj_id, el){
 	    render_namespace['GridPlotContainers'] = new chaco.GridPlotContainers();
 	}
 	collection = render_namespace['GridPlotContainers'];
-	model = collection.create(obj);
+	model = Backbone.create_or_get(collection, obj);
 	args = {'collection' : collection,
 		'model' : model};
 	if(el){args['el'] = el}
@@ -49,7 +73,7 @@ chaco.from_data = function(render_namespace, all_objs, obj_id, el){
 		render_namespace['ColormappedScatterPlots'] = new chaco.ColormappedScatterPlots();
 	    }
 	    collection = render_namespace['ColormappedScatterPlots'];
-	    model = collection.create(obj);
+	    model = Backbone.create_or_get(collection, obj);
 	    args = {'collection' : collection,
 		    'model' : model};
 	    if(el){args['el'] = el}
@@ -80,6 +104,7 @@ chaco.GridPlotContainers = Backbone.Collection.extend({
     model : chaco.GridPlotContainer,
     url : "/",
     localStorage : new Store('GridPlotContainers', true)
+
 });
 
 chaco.GridPlotContainerView = Backbone.View.extend({
@@ -94,11 +119,14 @@ chaco.GridPlotContainerView = Backbone.View.extend({
 	this.$el.height(this.model.get('height'));
 	this.$el.width(this.model.get('width'));
 	_.each(this.model.get('component_grid'), function(row){
+	    var rowdiv = $("<div class='row'></div>");
+	    that.$el.append(rowdiv);
 	    _.each(row, function(objid){
 		results = chaco.from_data(window.default_render_namespace,
 					  window.export_data, 
 					  objid);
-		that.$el.append(results['view'].$el);
+		results['view'].render();
+		rowdiv.append(results['view'].$el);
 	    });
 	    that.$el.append($("<br/>"));
 	});
@@ -112,6 +140,18 @@ chaco.ColormappedScatterPlot = Backbone.Model.extend({
 	    this.set({'id' : _.uniqueId('view')}, 
 		     {silent : true})
 	}
+	if (this.get('data_source')){
+	    var source = chaco.datasource_from_data(
+		window.default_namespace, 
+		export_data, 
+		this.get('data_source'))
+	    source = source['model'];
+	    source.on('change', function(){this.trigger('change')});
+	    this.set({'data_source_model' : source});
+	}
+    },
+    get_data : function(name){
+	return this.get('data_source_model').get('arrays')[name];
     },
     defaults : {
 	'height' :  0,
@@ -130,12 +170,61 @@ chaco.ColormappedScatterPlots = Backbone.Collection.extend({
     url : "/",
     localStorage : new Store('ColormappedScatterPlots', true)
 });
+chaco.linear_axes = function(data, display_size, reverse){
+    var domain, range
+    domain = [d3.min(data), d3.max(data)];
+    if (reverse){
+	range = [0, display_size];
+    }else{
+	range = [display_size, 0];
+    }
+    return d3.scale.linear().domain(domain).range(range);
+}
 chaco.ColormappedScatterPlotview = Backbone.View.extend({
     initialize : function(options){
 	if (!options['id']){
 	    this.id  = _.uniqueId('view');
 	}
+	//axes objects
+	var that = this;
+	var model = this.model;
+	var arrays = model.get('arrays');
+	this.index_axis = chaco.linear_axes(
+	    model.get_data(model.get('index_name')),
+	    model.get('width'),
+	    false);
+	this.range_axis = chaco.linear_axes(
+	    model.get_data(model.get('value_name'),
+			   model.get('height'),
+			   true));
     },
+    render : function(){
+	var model = this.model;
+	var svg = d3.select(this.el).append('svg')
+	    .attr('width', model.get('width'))
+	    .attr('height', model.get('height'));
+	svg.append('rect')
+	    .attr("class", "frame")
+	    .attr("width", model.get('width'))
+	    .attr("height", model.get('height'));
+	this.$el.addClass('plot');
+    },
+});
+
+//ArrayPlotData collection and model
+chaco.ArrayPlotData = Backbone.Model.extend({
+    initialize : function(attributes, options){
+	if (!attributes['id']){
+	    this.set({'id' : _.uniqueId('view')}, 
+		     {silent : true})
+	}
+    },
+});
+
+chaco.ArrayPlotDatas = Backbone.Collection.extend({
+    model : chaco.ColormappedScatterPlot,
+    url : "/",
+    localStorage : new Store('ArrayPlotDatas', true)
 });
 
 $(function(){
@@ -144,4 +233,4 @@ $(function(){
 			      window.main_id, 
 			      $('#chart')[0]);
     results['view'].render();
-});
+}); 

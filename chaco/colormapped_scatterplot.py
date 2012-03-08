@@ -83,8 +83,8 @@ class ColormappedScatterPlot(ScatterPlot):
     def add_json(self, objs):
         super(ColormappedScatterPlot, self).add_json(objs)
         myobj = objs[str(id(self))]
-        if hasattr(self, 'color_name'):
-            myobj['color_name'] = self.color_name
+        if self.color_data.metadata.get('name'):
+            myobj['color_name'] = self.color_data.metadata.get('name')
         distinct_color_vals = unique1d(self.color_data._data)
         distinct_colors = self.color_mapper.map_screen(distinct_color_vals)
         #lazy, this might not want to be here

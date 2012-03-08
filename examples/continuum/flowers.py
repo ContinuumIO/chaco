@@ -56,9 +56,11 @@ class DemoHandler(Handler):
     def do_export(self, obj):
         objs = {}
         demo.plot.add_json(objs)
-        pd.add_json(objs)
         #hack to tell us to add 'selection tool'
         objs[str(id(pd))]['tools'] = ['select'];
+        #hack to add plot data to serialized json
+        pd.add_json(objs)
+        print objs
         self.render_html_objs(str(id(demo.plot)), objs)
     
     def render_html_objs(self, main_id, objs):

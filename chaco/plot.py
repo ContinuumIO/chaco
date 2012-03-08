@@ -149,6 +149,7 @@ class Plot(DataView):
     def add_json(self, objs):
         super(Plot, self).add_json(objs)
         myobj = objs[str(id(self))]
+        myobj['data_source'] = str(id(self.data))
         myobj['plots'] = {}
         for k,v in self.plots.iteritems():
             myobj['plots'][k] = [str(id(x)) for x in v]
@@ -930,6 +931,7 @@ class Plot(DataView):
             if isinstance(data, ndarray):
                 if len(data.shape) == 1:
                     ds = ArrayDataSource(data, sort_order="none")
+                    ds.metadata['name'] = name
                 elif len(data.shape) == 2:
                     ds = ImageData(data=data, value_depth=1)
                 elif len(data.shape) == 3:

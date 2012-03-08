@@ -1,4 +1,4 @@
-window.export_data = {"86307760": {"height": 85.0, "width": 115.0, "plots": {"hello": ["86430352"]}, "y": 330.0, "x": 175.0, "type": "Plot", "id": "86307760"}, "88557808": {"height": 85.0, "width": 115.0, "plots": {"hello": ["89102384"]}, "y": 20.0, "x": 175.0, "type": "Plot", "id": "88557808"}, "84734224": {"height": 85.0, "width": 115.0, "plots": {"hello": ["84704912"]}, "y": 485.0, "x": 20.0, "type": "Plot", "id": "84734224"}, "87106960": {"height": 85.0, "width": 115.0, "plots": {"hello": ["87659728"]}, "y": 175.0, "x": 20.0, "type": "Plot", "id": "87106960"}, "86430352": {"value_name": "sepalWidth", "data_source": 82360176, "index_name": "sepalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "86430352"}, "82360176": {"arrays": {"sepalLength": [5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.8, 4.8, 4.3, 5.8, 5.7, 5.4, 5.1, 5.7, 5.1, 5.4, 5.1, 4.6, 5.1, 4.8, 5.0, 5.0, 5.2, 5.2, 4.7, 4.8, 5.4, 5.2, 5.5, 4.9, 5.0, 5.5, 4.9, 4.4, 5.1, 5.0, 4.5, 4.4, 5.0, 5.1, 4.8, 5.1, 4.6, 5.3, 5.0, 7.0, 6.4, 6.9, 5.5, 6.5, 5.7, 6.3, 4.9, 6.6, 5.2, 5.0, 5.9, 6.0, 6.1, 5.6, 6.7, 5.6, 5.8, 6.2, 5.6, 5.9, 6.1, 6.3, 6.1, 6.4, 6.6, 6.8, 6.7, 6.0, 5.7, 5.5, 5.5, 5.8, 6.0, 5.4, 6.0, 6.7, 6.3, 5.6, 5.5, 5.5, 6.1, 5.8, 5.0, 5.6, 5.7, 5.7, 6.2, 5.1, 5.7, 6.3, 5.8, 7.1, 6.3, 6.5, 7.6, 4.9, 7.3, 6.7, 7.2, 6.5, 6.4, 6.8, 5.7, 5.8, 6.4, 6.5, 7.7, 7.7, 6.0, 6.9, 5.6, 7.7, 6.3, 6.7, 7.2, 6.2, 6.1, 6.4, 7.2, 7.4, 7.9, 6.4, 6.3, 6.1, 7.7, 6.3, 6.4, 6.0, 6.9, 6.7, 6.9, 5.8, 6.8, 6.7, 6.7, 6.3, 6.5, 6.2, 5.9], "petalWidth": [0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2, 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3, 2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8, 2.5, 2.0, 1.9, 2.1, 2.0, 2.4, 2.3, 1.8, 2.2, 2.3, 1.5, 2.3, 2.0, 2.0, 1.8, 2.1, 1.8, 1.8, 1.8, 2.1, 1.6, 1.9, 2.0, 2.2, 1.5, 1.4, 2.3, 2.4, 1.8, 1.8, 2.1, 2.4, 2.3, 1.9, 2.3, 2.5, 2.3, 1.9, 2.0, 2.3, 1.8], "sepalWidth": [3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3, 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8, 3.3, 2.7, 3.0, 2.9, 3.0, 3.0, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3.0, 2.5, 2.8, 3.2, 3.0, 3.8, 2.6, 2.2, 3.2, 2.8, 2.8, 2.7, 3.3, 3.2, 2.8, 3.0, 2.8, 3.0, 2.8, 3.8, 2.8, 2.8, 2.6, 3.0, 3.4, 3.1, 3.0, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3.0, 2.5, 3.0, 3.4, 3.0], "petalLength": [1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.6, 1.4, 1.1, 1.2, 1.5, 1.3, 1.4, 1.7, 1.5, 1.7, 1.5, 1.0, 1.7, 1.9, 1.6, 1.6, 1.5, 1.4, 1.6, 1.6, 1.5, 1.5, 1.4, 1.5, 1.2, 1.3, 1.4, 1.3, 1.5, 1.3, 1.3, 1.3, 1.6, 1.9, 1.4, 1.6, 1.4, 1.5, 1.4, 4.7, 4.5, 4.9, 4.0, 4.6, 4.5, 4.7, 3.3, 4.6, 3.9, 3.5, 4.2, 4.0, 4.7, 3.6, 4.4, 4.5, 4.1, 4.5, 3.9, 4.8, 4.0, 4.9, 4.7, 4.3, 4.4, 4.8, 5.0, 4.5, 3.5, 3.8, 3.7, 3.9, 5.1, 4.5, 4.5, 4.7, 4.4, 4.1, 4.0, 4.4, 4.6, 4.0, 3.3, 4.2, 4.2, 4.2, 4.3, 3.0, 4.1, 6.0, 5.1, 5.9, 5.6, 5.8, 6.6, 4.5, 6.3, 5.8, 6.1, 5.1, 5.3, 5.5, 5.0, 5.1, 5.3, 5.5, 6.7, 6.9, 5.0, 5.7, 4.9, 6.7, 4.9, 5.7, 6.0, 4.8, 4.9, 5.6, 5.8, 6.1, 6.4, 5.6, 5.1, 5.6, 6.1, 5.6, 5.5, 4.8, 5.4, 5.6, 5.1, 5.1, 5.9, 5.7, 5.2, 5.0, 5.2, 5.4, 5.1], "species": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]}, "tools": "select", "type": "ArrayPlotData", "id": "82360176"}, "89102768": {"height": 85.0, "width": 115.0, "plots": {"hello": ["89204976"]}, "y": 20.0, "x": 330.0, "type": "Plot", "id": "89102768"}, "87659728": {"value_name": "sepalLength", "data_source": 82360176, "index_name": "petalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "87659728"}, "88447024": {"height": 85.0, "width": 115.0, "plots": {"hello": ["88557424"]}, "y": 20.0, "x": 20.0, "type": "Plot", "id": "88447024"}, "86996176": {"height": 85.0, "width": 115.0, "plots": {"hello": ["87106576"]}, "y": 330.0, "x": 485.0, "type": "Plot", "id": "86996176"}, "85537136": {"height": 85.0, "width": 115.0, "plots": {"hello": ["85635248"]}, "y": 485.0, "x": 330.0, "type": "Plot", "id": "85537136"}, "86208880": {"value_name": "petalWidth", "data_source": 82360176, "index_name": "sepalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "86208880"}, "87873008": {"value_name": "petalLength", "data_source": 82360176, "index_name": "petalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "87873008"}, "86209264": {"height": 85.0, "width": 115.0, "plots": {"hello": ["86307376"]}, "y": 330.0, "x": 20.0, "type": "Plot", "id": "86209264"}, "86430736": {"height": 85.0, "width": 115.0, "plots": {"hello": ["86995792"]}, "y": 330.0, "x": 330.0, "type": "Plot", "id": "86430736"}, "89205360": {"height": 85.0, "width": 115.0, "plots": {"hello": ["89782608"]}, "y": 20.0, "x": 485.0, "type": "Plot", "id": "89205360"}, "87873392": {"height": 85.0, "width": 115.0, "plots": {"hello": ["88446640"]}, "y": 175.0, "x": 485.0, "type": "Plot", "id": "87873392"}, "86995792": {"value_name": "petalLength", "data_source": 82360176, "index_name": "sepalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "86995792"}, "84704912": {"value_name": "sepalLength", "data_source": 82360176, "index_name": "sepalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "84704912"}, "84823984": {"value_name": "sepalWidth", "data_source": 82360176, "index_name": "sepalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "84823984"}, "88557424": {"value_name": "sepalLength", "data_source": 82360176, "index_name": "petalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "88557424"}, "86307376": {"value_name": "sepalLength", "data_source": 82360176, "index_name": "sepalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "86307376"}, "87774992": {"height": 85.0, "width": 115.0, "plots": {"hello": ["87873008"]}, "y": 175.0, "x": 330.0, "type": "Plot", "id": "87774992"}, "89204976": {"value_name": "petalLength", "data_source": 82360176, "index_name": "petalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "89204976"}, "88446640": {"value_name": "petalWidth", "data_source": 82360176, "index_name": "petalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "88446640"}, "89782608": {"value_name": "petalWidth", "data_source": 82360176, "index_name": "petalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "89782608"}, "87660112": {"height": 85.0, "width": 115.0, "plots": {"hello": ["87774608"]}, "y": 175.0, "x": 175.0, "type": "Plot", "id": "87660112"}, "84779184": {"height": 85.0, "width": 115.0, "plots": {"hello": ["84823984"]}, "y": 485.0, "x": 175.0, "type": "Plot", "id": "84779184"}, "89102384": {"value_name": "sepalWidth", "data_source": 82360176, "index_name": "petalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "89102384"}, "85635632": {"height": 85.0, "width": 115.0, "plots": {"hello": ["86208880"]}, "y": 485.0, "x": 485.0, "type": "Plot", "id": "85635632"}, "87774608": {"value_name": "sepalWidth", "data_source": 82360176, "index_name": "petalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "87774608"}, "85635248": {"value_name": "petalLength", "data_source": 82360176, "index_name": "sepalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "85635248"}, "87106576": {"value_name": "petalWidth", "data_source": 82360176, "index_name": "sepalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "87106576"}, "84734128": {"component_grid": [["84734224", "84779184", "85537136", "85635632"], ["86209264", "86307760", "86430736", "86996176"], ["87106960", "87660112", "87774992", "87873392"], ["88447024", "88557808", "89102768", "89205360"]], "height": 620, "width": 620, "shape": [4, 4], "y": 40, "x": 40, "type": "GridPlotContainer", "id": "84734128"}};
+window.export_data = {"86307760": {"height": 85.0, "width": 115.0, "plots": {"hello": ["86430352"]}, "y": 330.0, "x": 175.0, "type": "Plot", "id": "86307760"}, "88557808": {"height": 85.0, "width": 115.0, "plots": {"hello": ["89102384"]}, "y": 20.0, "x": 175.0, "type": "Plot", "id": "88557808"}, "84734224": {"height": 85.0, "width": 115.0, "plots": {"hello": ["84704912"]}, "y": 485.0, "x": 20.0, "type": "Plot", "id": "84734224"}, "87106960": {"height": 85.0, "width": 115.0, "plots": {"hello": ["87659728"]}, "y": 175.0, "x": 20.0, "type": "Plot", "id": "87106960"}, "86430352": {"value_name": "sepalWidth", "data_source": 82360176, "index_name": "sepalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "86430352"}, "82360176": {"arrays": {"sepalLength": [5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.8, 4.8, 4.3, 5.8, 5.7, 5.4, 5.1, 5.7, 5.1, 5.4, 5.1, 4.6, 5.1, 4.8, 5.0, 5.0, 5.2, 5.2, 4.7, 4.8, 5.4, 5.2, 5.5, 4.9, 5.0, 5.5, 4.9, 4.4, 5.1, 5.0, 4.5, 4.4, 5.0, 5.1, 4.8, 5.1, 4.6, 5.3, 5.0, 7.0, 6.4, 6.9, 5.5, 6.5, 5.7, 6.3, 4.9, 6.6, 5.2, 5.0, 5.9, 6.0, 6.1, 5.6, 6.7, 5.6, 5.8, 6.2, 5.6, 5.9, 6.1, 6.3, 6.1, 6.4, 6.6, 6.8, 6.7, 6.0, 5.7, 5.5, 5.5, 5.8, 6.0, 5.4, 6.0, 6.7, 6.3, 5.6, 5.5, 5.5, 6.1, 5.8, 5.0, 5.6, 5.7, 5.7, 6.2, 5.1, 5.7, 6.3, 5.8, 7.1, 6.3, 6.5, 7.6, 4.9, 7.3, 6.7, 7.2, 6.5, 6.4, 6.8, 5.7, 5.8, 6.4, 6.5, 7.7, 7.7, 6.0, 6.9, 5.6, 7.7, 6.3, 6.7, 7.2, 6.2, 6.1, 6.4, 7.2, 7.4, 7.9, 6.4, 6.3, 6.1, 7.7, 6.3, 6.4, 6.0, 6.9, 6.7, 6.9, 5.8, 6.8, 6.7, 6.7, 6.3, 6.5, 6.2, 5.9], "petalWidth": [0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2, 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3, 2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8, 2.5, 2.0, 1.9, 2.1, 2.0, 2.4, 2.3, 1.8, 2.2, 2.3, 1.5, 2.3, 2.0, 2.0, 1.8, 2.1, 1.8, 1.8, 1.8, 2.1, 1.6, 1.9, 2.0, 2.2, 1.5, 1.4, 2.3, 2.4, 1.8, 1.8, 2.1, 2.4, 2.3, 1.9, 2.3, 2.5, 2.3, 1.9, 2.0, 2.3, 1.8], "sepalWidth": [3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3, 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8, 3.3, 2.7, 3.0, 2.9, 3.0, 3.0, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3.0, 2.5, 2.8, 3.2, 3.0, 3.8, 2.6, 2.2, 3.2, 2.8, 2.8, 2.7, 3.3, 3.2, 2.8, 3.0, 2.8, 3.0, 2.8, 3.8, 2.8, 2.8, 2.6, 3.0, 3.4, 3.1, 3.0, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3.0, 2.5, 3.0, 3.4, 3.0], "petalLength": [1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.6, 1.4, 1.1, 1.2, 1.5, 1.3, 1.4, 1.7, 1.5, 1.7, 1.5, 1.0, 1.7, 1.9, 1.6, 1.6, 1.5, 1.4, 1.6, 1.6, 1.5, 1.5, 1.4, 1.5, 1.2, 1.3, 1.4, 1.3, 1.5, 1.3, 1.3, 1.3, 1.6, 1.9, 1.4, 1.6, 1.4, 1.5, 1.4, 4.7, 4.5, 4.9, 4.0, 4.6, 4.5, 4.7, 3.3, 4.6, 3.9, 3.5, 4.2, 4.0, 4.7, 3.6, 4.4, 4.5, 4.1, 4.5, 3.9, 4.8, 4.0, 4.9, 4.7, 4.3, 4.4, 4.8, 5.0, 4.5, 3.5, 3.8, 3.7, 3.9, 5.1, 4.5, 4.5, 4.7, 4.4, 4.1, 4.0, 4.4, 4.6, 4.0, 3.3, 4.2, 4.2, 4.2, 4.3, 3.0, 4.1, 6.0, 5.1, 5.9, 5.6, 5.8, 6.6, 4.5, 6.3, 5.8, 6.1, 5.1, 5.3, 5.5, 5.0, 5.1, 5.3, 5.5, 6.7, 6.9, 5.0, 5.7, 4.9, 6.7, 4.9, 5.7, 6.0, 4.8, 4.9, 5.6, 5.8, 6.1, 6.4, 5.6, 5.1, 5.6, 6.1, 5.6, 5.5, 4.8, 5.4, 5.6, 5.1, 5.1, 5.9, 5.7, 5.2, 5.0, 5.2, 5.4, 5.1], "species": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]}, "tools": ["select"], "type": "ArrayPlotData", "id": "82360176"}, "89102768": {"height": 85.0, "width": 115.0, "plots": {"hello": ["89204976"]}, "y": 20.0, "x": 330.0, "type": "Plot", "id": "89102768"}, "87659728": {"value_name": "sepalLength", "data_source": 82360176, "index_name": "petalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "87659728"}, "88447024": {"height": 85.0, "width": 115.0, "plots": {"hello": ["88557424"]}, "y": 20.0, "x": 20.0, "type": "Plot", "id": "88447024"}, "86996176": {"height": 85.0, "width": 115.0, "plots": {"hello": ["87106576"]}, "y": 330.0, "x": 485.0, "type": "Plot", "id": "86996176"}, "85537136": {"height": 85.0, "width": 115.0, "plots": {"hello": ["85635248"]}, "y": 485.0, "x": 330.0, "type": "Plot", "id": "85537136"}, "86208880": {"value_name": "petalWidth", "data_source": 82360176, "index_name": "sepalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "86208880"}, "87873008": {"value_name": "petalLength", "data_source": 82360176, "index_name": "petalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "87873008"}, "86209264": {"height": 85.0, "width": 115.0, "plots": {"hello": ["86307376"]}, "y": 330.0, "x": 20.0, "type": "Plot", "id": "86209264"}, "86430736": {"height": 85.0, "width": 115.0, "plots": {"hello": ["86995792"]}, "y": 330.0, "x": 330.0, "type": "Plot", "id": "86430736"}, "89205360": {"height": 85.0, "width": 115.0, "plots": {"hello": ["89782608"]}, "y": 20.0, "x": 485.0, "type": "Plot", "id": "89205360"}, "87873392": {"height": 85.0, "width": 115.0, "plots": {"hello": ["88446640"]}, "y": 175.0, "x": 485.0, "type": "Plot", "id": "87873392"}, "86995792": {"value_name": "petalLength", "data_source": 82360176, "index_name": "sepalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "86995792"}, "84704912": {"value_name": "sepalLength", "data_source": 82360176, "index_name": "sepalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "84704912"}, "84823984": {"value_name": "sepalWidth", "data_source": 82360176, "index_name": "sepalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "84823984"}, "88557424": {"value_name": "sepalLength", "data_source": 82360176, "index_name": "petalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "88557424"}, "86307376": {"value_name": "sepalLength", "data_source": 82360176, "index_name": "sepalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "86307376"}, "87774992": {"height": 85.0, "width": 115.0, "plots": {"hello": ["87873008"]}, "y": 175.0, "x": 330.0, "type": "Plot", "id": "87774992"}, "89204976": {"value_name": "petalLength", "data_source": 82360176, "index_name": "petalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "89204976"}, "88446640": {"value_name": "petalWidth", "data_source": 82360176, "index_name": "petalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "88446640"}, "89782608": {"value_name": "petalWidth", "data_source": 82360176, "index_name": "petalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "89782608"}, "87660112": {"height": 85.0, "width": 115.0, "plots": {"hello": ["87774608"]}, "y": 175.0, "x": 175.0, "type": "Plot", "id": "87660112"}, "84779184": {"height": 85.0, "width": 115.0, "plots": {"hello": ["84823984"]}, "y": 485.0, "x": 175.0, "type": "Plot", "id": "84779184"}, "89102384": {"value_name": "sepalWidth", "data_source": 82360176, "index_name": "petalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "89102384"}, "85635632": {"height": 85.0, "width": 115.0, "plots": {"hello": ["86208880"]}, "y": 485.0, "x": 485.0, "type": "Plot", "id": "85635632"}, "87774608": {"value_name": "sepalWidth", "data_source": 82360176, "index_name": "petalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "87774608"}, "85635248": {"value_name": "petalLength", "data_source": 82360176, "index_name": "sepalLength", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "85635248"}, "87106576": {"value_name": "petalWidth", "data_source": 82360176, "index_name": "sepalWidth", "color_name": "species", "color_map": {"1": [121, 255, 125], "0": [0, 0, 127], "2": [127, 0, 0]}, "type": "ColormappedScatterPlot", "id": "87106576"}, "84734128": {"component_grid": [["84734224", "84779184", "85537136", "85635632"], ["86209264", "86307760", "86430736", "86996176"], ["87106960", "87660112", "87774992", "87873392"], ["88447024", "88557808", "89102768", "89205360"]], "height": 620, "width": 620, "shape": [4, 4], "y": 40, "x": 40, "type": "GridPlotContainer", "id": "84734128"}};
 window.main_id = "84734128";
 Backbone.create_or_get = function(collection, attributes){
 	var obj = null;
@@ -146,7 +146,6 @@ chaco.ColormappedScatterPlot = Backbone.Model.extend({
 		export_data, 
 		this.get('data_source'))
 	    source = source['model'];
-	    source.on('change', function(){this.trigger('change')});
 	    this.set({'data_source_model' : source});
 	}
     },
@@ -161,9 +160,6 @@ chaco.ColormappedScatterPlot = Backbone.Model.extend({
 	'value_name' : '',
 	'data_source' : null
     },
-    render : function(){
-	
-    }
 });
 chaco.ColormappedScatterPlots = Backbone.Collection.extend({
     model : chaco.ColormappedScatterPlot,
@@ -197,6 +193,39 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 	    model.get_data(model.get('value_name')),
 			   model.get('height'),
 			   true);
+	model.get('data_source_model').on('change:arrays', function(){that.render_select()});
+	model.get('data_source_model').on('clear_select', function(){that.clear_brush()});
+    },
+    render_select : function(){
+	var model = this.model;
+	this.svg.selectAll('circle')
+	    .data(model.get('data_source_model').to_d3())
+	    .attr('fill', function(d){
+	    	var color_value = d[model.get('color_name')];
+	    	if (d['_active_mask']){
+	    	    var rgb = model.get('color_map')[color_value];
+	    	    return d3.rgb(rgb[0], rgb[1], rgb[2]).toString();
+	    	}else{
+	    	    return null;
+	    	}
+	    });
+    },
+    clear_brush : function(){
+	if(this.brush){
+	    this.svg.call(this.brush.clear());
+	}
+    },
+    clear_select_data : function(){
+	var model = this.model;
+	var data_source = model.get('data_source_model');
+	var index = model.get_data(model.get('index_name'));
+	var value = model.get_data(model.get('value_name'));
+	_.each(_.range(value.length), function(idx){
+	    data_source.set_select_data(idx, true);
+	});
+	data_source.trigger('clear_select');
+	data_source.trigger('change');
+	data_source.trigger('change:arrays');
     },
     render : function(){
 	var model = this.model;
@@ -217,8 +246,12 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 	    .enter().append('circle')
 	    .attr('fill', function(d){
 		var color_value = d[model.get('color_name')];
-		var rgb = model.get('color_map')[color_value];
-		return d3.rgb(rgb[0], rgb[1], rgb[2]).toString();
+		if (d['_active_mask']){
+		    var rgb = model.get('color_map')[color_value];
+		    return d3.rgb(rgb[0], rgb[1], rgb[2]).toString();
+		}else{
+		    return null;
+		}
 	    })
 	    .attr('cx', function(d){
 		return that.index_axis(d[model.get('index_name')]);
@@ -227,7 +260,34 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 		return that.range_axis(d[model.get('value_name')]);
 	    })
 	    .attr('r', 3);
-	console.log(['sdfsdfds']);
+	this.svg = svg;
+	var brushstart = function() {
+	    that.clear_select_data();
+	}
+	// Highlight the selected circles.
+	var brushend = function() {
+	    if (brush.empty()){return that.clear_select_data()}
+	    var e = brush.extent();
+	    var data_source = model.get('data_source_model');
+	    var index = model.get_data(model.get('index_name'));
+	    var value = model.get_data(model.get('value_name'));
+	    _.each(_.range(value.length), function(idx){
+		if  (!(e[0][0] <= index[idx] && index[idx] <= e[1][0]
+		       && e[0][1] <= value[idx] && value[idx] <= e[1][1])){
+		    data_source.set_select_data(idx, false);
+		}
+	    });
+	    data_source.trigger('change');
+	    data_source.trigger('change:arrays');
+	}
+
+	var brush = d3.svg.brush()
+	    .on("brushstart", brushstart)
+	    .on("brushend", brushend)
+	    .x(this.index_axis)
+	    .y(this.range_axis)
+	svg.call(brush);
+	this.brush = brush;
     },
 });
 
@@ -239,9 +299,18 @@ chaco.ArrayPlotData = Backbone.Model.extend({
 		     {silent : true})
 	}
 	var that = this;
-	this.bind('change:arrays', function(){
+	this.on('change:arrays', function(){
 	    delete that['_to_d3'];
 	});
+	if (this.get('tools').indexOf('select') >= 0){
+	    //initialize selection data by mapping false to
+	    //a random array that we currently have (to get length info)
+	    this.get('arrays')['_active_mask'] = _.map(_.values(this.get('arrays'))[0], 
+						       function(){return true});
+	}
+    },
+    set_select_data : function(index, value){
+	this.get('arrays')['_active_mask'][index] = value;
     },
     to_d3 : function(force){
 	//go from bunch of arrays to array of dicts

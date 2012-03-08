@@ -146,7 +146,6 @@ chaco.ColormappedScatterPlot = Backbone.Model.extend({
 		export_data, 
 		this.get('data_source'))
 	    source = source['model'];
-	    source.on('change', function(){this.trigger('change')});
 	    this.set({'data_source_model' : source});
 	}
     },
@@ -161,9 +160,6 @@ chaco.ColormappedScatterPlot = Backbone.Model.extend({
 	'value_name' : '',
 	'data_source' : null
     },
-    render : function(){
-	
-    }
 });
 chaco.ColormappedScatterPlots = Backbone.Collection.extend({
     model : chaco.ColormappedScatterPlot,
@@ -197,6 +193,39 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 	    model.get_data(model.get('value_name')),
 			   model.get('height'),
 			   true);
+	model.get('data_source_model').on('change:arrays', function(){that.render_select()});
+	model.get('data_source_model').on('clear_select', function(){that.clear_brush()});
+    },
+    render_select : function(){
+	var model = this.model;
+	this.svg.selectAll('circle')
+	    .data(model.get('data_source_model').to_d3())
+	    .attr('fill', function(d){
+	    	var color_value = d[model.get('color_name')];
+	    	if (d['_active_mask']){
+	    	    var rgb = model.get('color_map')[color_value];
+	    	    return d3.rgb(rgb[0], rgb[1], rgb[2]).toString();
+	    	}else{
+	    	    return null;
+	    	}
+	    });
+    },
+    clear_brush : function(){
+	if(this.brush){
+	    this.svg.call(this.brush.clear());
+	}
+    },
+    clear_select_data : function(){
+	var model = this.model;
+	var data_source = model.get('data_source_model');
+	var index = model.get_data(model.get('index_name'));
+	var value = model.get_data(model.get('value_name'));
+	_.each(_.range(value.length), function(idx){
+	    data_source.set_select_data(idx, true);
+	});
+	data_source.trigger('clear_select');
+	data_source.trigger('change');
+	data_source.trigger('change:arrays');
     },
     render : function(){
 	var model = this.model;
@@ -217,8 +246,12 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 	    .enter().append('circle')
 	    .attr('fill', function(d){
 		var color_value = d[model.get('color_name')];
-		var rgb = model.get('color_map')[color_value];
-		return d3.rgb(rgb[0], rgb[1], rgb[2]).toString();
+		if (d['_active_mask']){
+		    var rgb = model.get('color_map')[color_value];
+		    return d3.rgb(rgb[0], rgb[1], rgb[2]).toString();
+		}else{
+		    return null;
+		}
 	    })
 	    .attr('cx', function(d){
 		return that.index_axis(d[model.get('index_name')]);
@@ -227,7 +260,34 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 		return that.range_axis(d[model.get('value_name')]);
 	    })
 	    .attr('r', 3);
-	console.log(['sdfsdfds']);
+	this.svg = svg;
+	var brushstart = function() {
+	    that.clear_select_data();
+	}
+	// Highlight the selected circles.
+	var brushend = function() {
+	    if (brush.empty()){return that.clear_select_data()}
+	    var e = brush.extent();
+	    var data_source = model.get('data_source_model');
+	    var index = model.get_data(model.get('index_name'));
+	    var value = model.get_data(model.get('value_name'));
+	    _.each(_.range(value.length), function(idx){
+		if  (!(e[0][0] <= index[idx] && index[idx] <= e[1][0]
+		       && e[0][1] <= value[idx] && value[idx] <= e[1][1])){
+		    data_source.set_select_data(idx, false);
+		}
+	    });
+	    data_source.trigger('change');
+	    data_source.trigger('change:arrays');
+	}
+
+	var brush = d3.svg.brush()
+	    .on("brushstart", brushstart)
+	    .on("brushend", brushend)
+	    .x(this.index_axis)
+	    .y(this.range_axis)
+	svg.call(brush);
+	this.brush = brush;
     },
 });
 
@@ -239,9 +299,18 @@ chaco.ArrayPlotData = Backbone.Model.extend({
 		     {silent : true})
 	}
 	var that = this;
-	this.bind('change:arrays', function(){
+	this.on('change:arrays', function(){
 	    delete that['_to_d3'];
 	});
+	if (this.get('tools').indexOf('select') >= 0){
+	    //initialize selection data by mapping false to
+	    //a random array that we currently have (to get length info)
+	    this.get('arrays')['_active_mask'] = _.map(_.values(this.get('arrays'))[0], 
+						       function(){return true});
+	}
+    },
+    set_select_data : function(index, value){
+	this.get('arrays')['_active_mask'][index] = value;
     },
     to_d3 : function(force){
 	//go from bunch of arrays to array of dicts

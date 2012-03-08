@@ -169,7 +169,7 @@ chaco.ColormappedScatterPlots = Backbone.Collection.extend({
 chaco.linear_axes = function(data, display_size, reverse){
     var domain, range
     domain = [d3.min(data), d3.max(data)];
-    if (reverse){
+    if (!reverse){
 	range = [0, display_size];
     }else{
 	range = [display_size, 0];

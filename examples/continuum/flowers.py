@@ -4,7 +4,7 @@ import chaco.tools.api as toolsapi
 from traits.api import HasTraits, Instance
 from enable.api import Component, ComponentEditor
 from traitsui.api import Item, Group, View, Handler, Action
-size=(500,500)
+size=(700,700)
 pd = chacoapi.ArrayPlotData()
 def _create_plot_component():
     varnames = data['traits']
@@ -60,6 +60,8 @@ class DemoHandler(Handler):
         #hack to tell us to add 'selection tool'
         objs[str(id(pd))]['tools'] = 'select'
         print objs
+        import pdb
+        pdb.set_trace()
         self.render_html_objs(str(id(demo.plot)), objs)
     
     def render_html_objs(self, main_id, objs):

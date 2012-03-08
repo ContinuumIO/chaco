@@ -53,6 +53,8 @@ class BasePlotContainer(Container):
         objs[str(id(self))] =  {'type' : self.__class__.__name__,
                                 'height' : self.height,
                                 'width' : self.width,
+                                'x' : self.x,
+                                'y' : self.y,
                                 'id' : str(id(self))}
     
     def _get_plot_components(self):

@@ -194,9 +194,9 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 	    model.get('width'),
 	    false);
 	this.range_axis = chaco.linear_axes(
-	    model.get_data(model.get('value_name'),
+	    model.get_data(model.get('value_name')),
 			   model.get('height'),
-			   true));
+			   true);
     },
     render : function(){
 	var model = this.model;
@@ -208,6 +208,24 @@ chaco.ColormappedScatterPlotview = Backbone.View.extend({
 	    .attr("width", model.get('width'))
 	    .attr("height", model.get('height'));
 	this.$el.addClass('plot');
+	this.$el.css({ 'position' : 'absolute', 
+		       'bottom' : model.get('x') + 'px', 
+		       'left' : model.get('y') + 'px'});
+	var that = this;
+	svg.selectAll('circle')
+	    .data(model.get('data_source_model').to_d3())
+	    .enter().append('circle')
+	    .attr('class', function(d){
+		return "" + d[model.get('color_name')];
+	    })
+	    .attr('cx', function(d){
+		return that.index_axis(d[model.get('index_name')]);
+	    })
+	    .attr('cy', function(d){
+		return that.range_axis(d[model.get('value_name')]);
+	    })
+	    .attr('r', 3);
+	console.log(['sdfsdfds']);
     },
 });
 
@@ -218,11 +236,33 @@ chaco.ArrayPlotData = Backbone.Model.extend({
 	    this.set({'id' : _.uniqueId('view')}, 
 		     {silent : true})
 	}
+	var that = this;
+	this.bind('change:arrays', function(){
+	    delete that['_to_d3'];
+	});
     },
+    to_d3 : function(force){
+	//go from bunch of arrays to array of dicts
+	if (!force && this._to_d3){
+	    return this._to_d3
+	}else{
+	    data = []
+	    _.each(this.get('arrays'), function(array, k){
+		_.each(array, function(val, idx){
+		    if(!data[idx]){
+			data[idx] = {};
+		    }
+		    data[idx][k] = val;
+		});
+	    });
+	    this._to_d3 = data;
+	    return this._to_d3;
+	}
+    }
 });
 
 chaco.ArrayPlotDatas = Backbone.Collection.extend({
-    model : chaco.ColormappedScatterPlot,
+    model : chaco.ArrayPlotData,
     url : "/",
     localStorage : new Store('ArrayPlotDatas', true)
 });
@@ -233,4 +273,4 @@ $(function(){
 			      window.main_id, 
 			      $('#chart')[0]);
     results['view'].render();
-}); 
+});

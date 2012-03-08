@@ -28,7 +28,6 @@ rect.frame {
 }
 
 circle {
-  fill: #ccc;
   fill-opacity: .5;
 }
 

@@ -59,9 +59,6 @@ class DemoHandler(Handler):
         pd.add_json(objs)
         #hack to tell us to add 'selection tool'
         objs[str(id(pd))]['tools'] = ['select'];
-        print objs
-        import pdb
-        pdb.set_trace()
         self.render_html_objs(str(id(demo.plot)), objs)
     
     def render_html_objs(self, main_id, objs):

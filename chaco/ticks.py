@@ -18,9 +18,9 @@ from numpy import arange, argsort, array, ceil, concatenate, equal, finfo, \
     putmask, shape
 
 # Enthought library imports
-from traits.api import HasTraits, Any
+#from traits.api import HasTraits, Any
 
-class AbstractTickGenerator(HasTraits):
+class AbstractTickGenerator(object):
     """ Abstract class for tick generators.
     """
     def get_ticks(self, data_low, data_high, bounds_low, bounds_high, interval,
@@ -92,7 +92,7 @@ class ShowAllTickGenerator(AbstractTickGenerator):
         to the constructor.
     """
     # A sequence of positions for ticks.
-    positions = Any
+    #positions = Any
 
     def get_ticks(self, data_low, data_high, bounds_low, bounds_high, interval,
                   use_endpoints=False, scale='linear'):
@@ -308,6 +308,7 @@ def auto_interval ( data_low, data_high ):
     # Preference is given to more ticks:
     #   Note reverse order and see kludge below...
     divisions = arange( 8.0, 2.0, -1.0 ) # ( 7, 6, ..., 3 )
+    divisions = array([8.0, 7.0, 6.0, 5.0, 4.0, 3.0])
 
     # Calculate the intervals for the divisions:
     candidate_intervals = range / divisions
@@ -322,6 +323,8 @@ def auto_interval ( data_low, data_high ):
 
     # Calculate the absolute differences between the candidates
     # (with magnitude removed) and the magic intervals:
+    magic2 = magic_intervals[:,newaxis]
+
     differences = abs( magic_intervals[:,newaxis] - mantissas )
 
     # Find the division and magic interval combo that produce the
@@ -330,10 +333,10 @@ def auto_interval ( data_low, data_high ):
     # KLUDGE: 'argsort' doesn't preserve the order of equal values,
     # so we subtract a small, index dependent amount from each difference
     # to force correct ordering.
-    sh    = shape( differences )
-    small = 2.2e-16 * arange( sh[1] ) * arange( sh[0] )[:,newaxis]
-    small = small[::-1,::-1] #reverse the order
-    differences = differences - small
+    #sh    = shape( differences )
+    #small = 2.2e-16 * arange( sh[1] ) * arange( sh[0] )[:,newaxis]
+    #small = small[::-1,::-1] #reverse the order
+    #differences = differences - small
 
     # ? Numeric should allow keyword "axis" ? comment out for now
     #best_mantissa = minimum.reduce(differences,axis=0)
@@ -342,6 +345,8 @@ def auto_interval ( data_low, data_high ):
     best_magic     = minimum.reduce( differences, -1 )
     magic_index    = argsort( best_magic )[0]
     mantissa_index = argsort( best_mantissa )[0]
+    import pdb
+    #pdb.set_trace()
 
     # The best interval is the magic_interval multiplied by the magnitude
     # of the best mantissa:
@@ -351,6 +356,80 @@ def auto_interval ( data_low, data_high ):
     if result == 0.0:
         result = finfo(float).eps
     return result
+def auto_interval2 ( data_low, data_high ):
+    """ Calculates the tick interval for a range.
+
+        The boundaries for the data to be plotted on the axis are::
+
+            data_bounds = (data_low,data_high)
+
+        The function chooses the number of tick marks, which can be between
+        3 and 9 marks (including end points), and chooses tick intervals at
+        1, 2, 2.5, 5, 10, 20, ...
+
+        Returns
+        -------
+        interval : float
+            tick mark interval for axis
+    """
+    range = float( data_high ) - float( data_low )
+
+    # We'll choose from between 2 and 8 tick marks.
+    # Preference is given to more ticks:
+    #   Note reverse order and see kludge below...
+    divisions = arange( 8.0, 2.0, -1.0 ) # ( 7, 6, ..., 3 )
+    divisions = array([8.0, 7.0, 6.0, 5.0, 4.0, 3.0])
+
+    # Calculate the intervals for the divisions:
+    candidate_intervals = range / divisions
+
+    # Get magnitudes and mantissas for each candidate:
+    magnitudes = 10.0 ** floor( log10( candidate_intervals ) )
+    mantissas  = candidate_intervals / magnitudes
+
+    # List of "pleasing" intervals between ticks on graph.
+    # Only the first magnitude are listed, higher mags others are inferred:
+    magic_intervals = array( ( 1.0, 2.0, 2.5, 5.0, 10.0 ) )
+
+    best_mantissas = []
+    best_magics = []
+    for mi in magic_intervals:
+        diff_arr = abs(mi - mantissas)
+        best_magics.append(diff_arr.min())
+
+    for ma in mantissas:
+        diff_arr = abs(ma - magic_intervals)
+        best_mantissas.append(diff_arr.min())
+
+
+    best_mantissas = array(best_mantissas)
+    best_magics = array(best_magics)
+    #best_mantissa = best_mantissas.min()
+    #best_magic = best_magics.min()
+    # ? Numeric should allow keyword "axis" ? comment out for now
+    #best_mantissa = minimum.reduce(differences,axis=0)
+    #best_magic = minimum.reduce(differences,axis=-1)
+    #best_mantissa  = minimum.reduce( differences,  0 )
+    #best_magic     = minimum.reduce( differences, -1 )
+    magic_index    = argsort( best_magics )[0]
+    mantissa_index = argsort( best_mantissas )[0]
+
+    # The best interval is the magic_interval multiplied by the magnitude
+    # of the best mantissa:
+    interval  = magic_intervals[ magic_index ]
+    magnitude = magnitudes[ mantissa_index ]
+    result    = interval * magnitude
+    if result == 0.0:
+        result = finfo(float).eps
+    return result
+
+def my_argsort(arr):
+    sorted_ = arr[:]
+    sorted_.sort()
+    ret_arr = []
+    for x in arr:
+        ret_arr.append(sorted_.index(x))
+    return ret_arr
 
 #--------------------------------------------------------------------------------
 #  Compute the best tick interval length to achieve a specified number of tick
@@ -378,9 +457,13 @@ def tick_intervals ( data_low, data_high, intervals ):
     if range == 0.0:
         range = 1.0
     interval  = range / intervals
-    factor    = 10.0 ** floor( log10( interval ) )
-    interval /= factor
+    exp_ = floor( log10( interval ) )
 
+    #factor    = 10.0 ** floor( log10( interval ) )
+    factor    = 10.0 ** exp_
+    print "exp_ %f pre_factor %f pre_interval %f " % (exp_, factor, interval)
+    interval /= factor
+    print "factor %d initial_interval %d" % (factor, interval)
     if interval < 2.0:
         interval = 2.0
         index    = 0
@@ -396,6 +479,7 @@ def tick_intervals ( data_low, data_high, intervals ):
 
     while True:
         result = interval * factor
+        print "result %f index %d interval %f" % ( result, index, interval)
         if ((floor( data_low / result ) * result) + (intervals * result) >=
              data_high):
             return result

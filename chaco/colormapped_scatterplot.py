@@ -5,7 +5,7 @@ from __future__ import with_statement
 
 # Major library imports
 from numpy import argsort, array, concatenate, nonzero, invert, take, \
-                  isnan, transpose, newaxis, zeros
+                  isnan, transpose, newaxis, zeros, unique1d
 
 # Enthought library imports
 from kiva.constants import STROKE
@@ -80,7 +80,24 @@ class ColormappedScatterPlot(ScatterPlot):
     #------------------------------------------------------------------------
     # BaseXYPlot interface
     #------------------------------------------------------------------------
-
+    def add_json(self, objs):
+        super(ColormappedScatterPlot, self).add_json(objs)
+        myobj = objs[str(id(self))]
+        if self.color_data.metadata.get('name'):
+            myobj['color_name'] = self.color_data.metadata.get('name')
+        distinct_color_vals = unique1d(self.color_data._data)
+        distinct_colors = self.color_mapper.map_screen(distinct_color_vals)
+        #lazy, this might not want to be here
+        #convert to rgb from 0-255, remove alpha column
+        distinct_colors = 255*distinct_colors[:,:-1]
+        distinct_colors = distinct_colors.astype('int')
+        #hack
+        #we have to convert color_data values to strings here.... json does not allow for ints as keys.
+        color_map = {}
+        for color_val, color in zip(distinct_color_vals, distinct_colors):
+            color_map[str(color_val)] = color.tolist()
+        myobj['color_map'] = color_map
+        
     def map_screen(self, data_array):
         """
         Maps an array of data points into screen space, and returns them as

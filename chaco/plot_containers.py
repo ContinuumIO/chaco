@@ -365,7 +365,18 @@ class GridPlotContainer(BasePlotContainer):
     _cached_total_size = Any
     _h_size_prefs = Any
     _v_size_prefs = Any
-
+    
+    def add_json(self, objs):
+        super(GridPlotContainer, self).add_json(objs)
+        myobj = objs[str(id(self))]
+        myobj.update({'shape' : self.shape,
+                      'component_grid' : [[str(id(plt)) for plt in row] 
+                                          for row in self.component_grid]})
+        for row in self.component_grid:
+            for plt in row:
+                plt.add_json(objs)
+                
+    
     class SizePrefs(object):
         """ Object to hold size preferences across spans in a particular
         dimension.  For instance, if SizePrefs is being used for the row

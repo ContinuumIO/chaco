@@ -146,6 +146,13 @@ class BaseXYPlot(AbstractPlotRenderer):
     #------------------------------------------------------------------------
     # Abstract methods that subclasses must implement
     #------------------------------------------------------------------------
+    def add_json(self, objs):
+        super(BaseXYPlot, self).add_json(objs)
+        myobj = objs[str(id(self))]
+        if self.index.metadata.get('name'):
+            myobj['index_name'] = self.index.metadata.get('name')
+        if self.value.metadata.get('name'):
+            myobj['value_name'] = self.value.metadata.get('name')
 
     def _render(self, gc, points):
         """ Abstract method for rendering points.

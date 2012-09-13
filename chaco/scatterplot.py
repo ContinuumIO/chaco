@@ -217,7 +217,6 @@ class ScatterPlot(BaseXYPlot):
     #------------------------------------------------------------------------
     # Overridden PlotRenderer methods
     #------------------------------------------------------------------------
-
     def map_screen(self, data_array):
         """ Maps an array of data points into screen space and returns it as
         an array.

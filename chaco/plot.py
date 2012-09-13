@@ -36,6 +36,7 @@ from log_mapper import LogMapper
 from plot_label import PlotLabel
 from polygon_plot import PolygonPlot
 from scatterplot import ScatterPlot
+from filled_line_plot import FilledLinePlot
 
 
 
@@ -108,6 +109,7 @@ class Plot(DataView):
                              bar = BarPlot,
                              scatter = ScatterPlot,
                              polygon = PolygonPlot,
+                             filled_line = FilledLinePlot,
                              cmap_scatter = ColormappedScatterPlot,
                              img_plot = ImagePlot,
                              cmap_img_plot = CMapImagePlot,
@@ -245,7 +247,7 @@ class Plot(DataView):
         """ Adds a new sub-plot using the given data and plot style.
 
         Parameters
-        ==========
+        ----------
         data : string, tuple(string), list(string)
             The data to be plotted. The type of plot and the number of
             arguments determines how the arguments are interpreted:
@@ -281,7 +283,7 @@ class Plot(DataView):
             plot types requested, e.g.,'line_color' or 'line_width'.
 
         Examples
-        ========
+        --------
         ::
 
             plot("my_data", type="line", name="myplot", color=lightblue)
@@ -291,7 +293,7 @@ class Plot(DataView):
             plot(("x", "y1", "y2", "y3"))
 
         Returns
-        =======
+        -------
         [renderers] -> list of renderers created in response to this call to plot()
         """
 
@@ -310,7 +312,7 @@ class Plot(DataView):
             name = self._make_new_plot_name()
         if origin is None:
             origin = self.default_origin
-        if plot_type in ("line", "scatter", "polygon", "bar"):
+        if plot_type in ("line", "scatter", "polygon", "bar", "filled_line"):
             if len(data) == 1:
                 if self.default_index is None:
                     # Create the default index based on the length of the first
@@ -339,8 +341,8 @@ class Plot(DataView):
                         self._auto_color_idx = \
                             (self._auto_color_idx + 1) % len(self.auto_colors)
                         styles["color"] = self.auto_colors[self._auto_color_idx]
-                elif plot_type == "polygon":
-                    cls = self.renderer_map["polygon"]
+                elif plot_type in ("polygon", "filled_line"):
+                    cls = self.renderer_map[plot_type]
                     # handle auto-coloring request
                     if styles.get("edge_color") == "auto":
                         self._auto_edge_color_idx = \
@@ -486,7 +488,7 @@ class Plot(DataView):
         *data*'s second axis, and ybounds corresponds to the first axis.
 
         Parameters
-        ==========
+        ----------
         data : string
             The name of the data array in self.plot_data
         name : string
@@ -541,7 +543,7 @@ class Plot(DataView):
         """ Adds contour plots to this Plot object.
 
         Parameters
-        ==========
+        ----------
         data : string
             The name of the data array in self.plot_data, which must be
             floating point data.
@@ -621,7 +623,7 @@ class Plot(DataView):
             The 2D plot data
 
         axis : int
-            The axis along which the bounds are tyo be set
+            The axis along which the bounds are to be set
         """
 
         num_ticks = array_data.shape[axis] + 1
@@ -713,7 +715,7 @@ class Plot(DataView):
         """ Adds a new sub-plot using the given data and plot style.
 
         Parameters
-        ==========
+        ----------
         data : list(string), tuple(string)
             The names of the data to be plotted in the ArrayDataSource.  The
             number of arguments determines how they are interpreted:
@@ -742,7 +744,7 @@ class Plot(DataView):
             then a log scale is used.
 
         Styles
-        ======
+        ------
         These are all optional keyword arguments.
 
         bar_color : string, 3- or 4-tuple
@@ -766,7 +768,7 @@ class Plot(DataView):
             error bar.
 
         Returns
-        =======
+        -------
         [renderers] -> list of renderers created in response to this call.
         """
         if len(data) == 0:
@@ -936,7 +938,7 @@ class Plot(DataView):
                     ds = ImageData(data=data, value_depth=1)
                 elif len(data.shape) == 3:
                     if data.shape[2] in (3,4):
-                        ds = ImageData(data=data, value_depth=data.shape[2])
+                        ds = ImageData(data=data, value_depth=int(data.shape[2]))
                     else:
                         raise ValueError("Unhandled array shape in creating new plot: " \
                                          + str(data.shape))

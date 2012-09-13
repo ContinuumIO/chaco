@@ -5,7 +5,7 @@ from __future__ import with_statement
 
 # Major library imports
 from numpy import argsort, array, concatenate, nonzero, invert, take, \
-                  isnan, transpose, newaxis, zeros, unique1d
+                  isnan, transpose, newaxis, zeros, unique
 
 # Enthought library imports
 from kiva.constants import STROKE
@@ -85,7 +85,7 @@ class ColormappedScatterPlot(ScatterPlot):
         myobj = objs[str(id(self))]
         if self.color_data.metadata.get('name'):
             myobj['color_name'] = self.color_data.metadata.get('name')
-        distinct_color_vals = unique1d(self.color_data._data)
+        distinct_color_vals = unique(self.color_data._data)
         distinct_colors = self.color_mapper.map_screen(distinct_color_vals)
         #lazy, this might not want to be here
         #convert to rgb from 0-255, remove alpha column
